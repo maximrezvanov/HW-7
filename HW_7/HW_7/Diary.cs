@@ -8,16 +8,11 @@ namespace HW_7
     public class Diary
     {
         private List<Note> notes;
-        string path;
-
         string[] titles;
-        int index;
-
 
         public Diary(params Note[] arg)
         {
             notes = arg.ToList();
-            this.index = 0;
             this.titles = new string[]
             {
                 "Date", "Text1", "Text2", "Text3", "Text4"
@@ -25,35 +20,39 @@ namespace HW_7
             this.notes = new List<Note>();
         }
 
-        public void SaveNotes(string file)
+        public void SaveNotes(string path)
         {
-            using (StreamWriter writer = new StreamWriter(file))
+            try
             {
-                //titles = stream.ReadLine().Split(',');
-                writer.WriteLine(titles);
-               
-                foreach (var note in notes)
+                for (int i = 0; i < notes.Count; i++)
                 {
-                    writer.Write(note);
-                    //writer.Write($"{i}-я группа: [{String.Join(" ", NextGroup(i, GroupsNum(n), n))}] \n");
+                    string line = String.Format($"{notes[i].date},{notes[i].text1},{notes[i].text2},{notes[i].text3},{notes[i].text4}");
+                    File.AppendAllText(path, $"{line}\n");
                 }
-                
-
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }     
         }
 
-        public void Load()
+        public void LoadNotes(string path)
         {
             notes.Clear();
-
-            using (StreamReader stream = new StreamReader(this.path))
+            try
             {
-                titles = stream.ReadLine().Split(',');
-                while (!stream.EndOfStream)
+                using (StreamReader stream = new StreamReader(path))
                 {
-                    string[] args = stream.ReadLine().Split(',');
-                    AddNote(new Note());
+                    while (!stream.EndOfStream)
+                    {
+                        string[] args = stream.ReadLine().Split(',');
+                        AddNote(new Note(args[0], args[1], args[2], args[3], args[4]));
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -67,13 +66,15 @@ namespace HW_7
             notes.Add(newNote);
         }
 
-        public void DeleteNote(int indexNote)
+        #region removeNotes
+
+        public void RemoveNoteByIndex(int indexNote)
         {
             if(notes.Count != 0)
             notes.RemoveAt(indexNote);
         }
 
-        public void RemoveFieldNote(string field)
+        public void RemoveNoteByField(string field)
         {
             if (notes.Count != 0)
             {
@@ -84,6 +85,7 @@ namespace HW_7
                 }      
             }
         }
+        #endregion
 
         public void EditNote(int indexNote)
         {
@@ -102,7 +104,7 @@ namespace HW_7
 
         public void PrintNote()
         {
-            Console.WriteLine($"# {titles[0], -10} \t\t {titles[1], -10}\t {titles[2], -10}\t {titles[3], -10}\t {titles[4], -10} \n");
+            Console.WriteLine($"# {titles[0],-10} \t\t {titles[1],-10}\t {titles[2],-10}\t {titles[3],-10}\t {titles[4],-10} \n");
             for (int i = 0; i < notes.Count; i++)
             {
                 Console.WriteLine(i + " " + notes[i].PrintNotes());

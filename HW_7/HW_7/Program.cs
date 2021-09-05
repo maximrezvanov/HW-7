@@ -6,7 +6,7 @@ namespace HW_7
     {
         public static void Main(string[] args)
         {
-            string path = ".";
+            string path = "notes.txt";
             string date, text1, text2, text3, text4;
           
             Diary diary = new Diary(new Note());
@@ -44,11 +44,11 @@ namespace HW_7
                         break;
                     case 2:
                         Console.WriteLine("Removes item by index:");
-                        diary.DeleteNote(int.Parse(Console.ReadLine()));
+                        diary.RemoveNoteByIndex(int.Parse(Console.ReadLine()));
                         break;
                     case 3:
                         Console.WriteLine("Removes item by field:");
-                        diary.RemoveFieldNote(Console.ReadLine());
+                        diary.RemoveNoteByField(Console.ReadLine());
                         break;
                     case 4:
                         Console.WriteLine("Enter item index:");
@@ -56,6 +56,10 @@ namespace HW_7
                         break;
                     case 5:
                         diary.SaveNotes(path);
+                        break;
+                    case 6:
+                        diary.LoadNotes(path);
+                        diary.PrintNote();
                         break;
                     case 7:
                         diary.PrintNote();
