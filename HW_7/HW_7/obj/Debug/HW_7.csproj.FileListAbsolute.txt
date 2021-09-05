@@ -1,0 +1,6 @@
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/bin/Debug/HW_7.exe
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/bin/Debug/HW_7.pdb
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/obj/Debug/HW_7.csprojAssemblyReference.cache
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/obj/Debug/HW_7.csproj.CoreCompileInputs.cache
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/obj/Debug/HW_7.exe
+/Users/gagarin/SkillBox/C#/7/HW_7/HW_7/obj/Debug/HW_7.pdb

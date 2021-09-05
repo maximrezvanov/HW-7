@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{64521C94-EF1A-4E1D-8B15-292B79BD7DB3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW_7/Diary.cs">
+    <Files>
+      <File FileName="HW_7/Program.cs" Line="59" Column="31" />
+      <File FileName="HW_7/Diary.cs" Line="33" Column="17" />
+      <File FileName="HW_7/Notes.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HW_7" expanded="True">
+            <Node name="HW_7" expanded="True">
+              <Node name="Diary.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.HW__7 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
