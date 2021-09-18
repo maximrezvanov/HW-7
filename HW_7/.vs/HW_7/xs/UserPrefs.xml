@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{64521C94-EF1A-4E1D-8B15-292B79BD7DB3}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="HW_7/Diary.cs">
     <Files>
-      <File FileName="HW_7/Program.cs" Line="59" Column="31" />
-      <File FileName="HW_7/Diary.cs" Line="33" Column="17" />
-      <File FileName="HW_7/Notes.cs" />
+      <File FileName="HW_7/Program.cs" Line="27" Column="1" />
+      <File FileName="HW_7/Diary.cs" Line="33" Column="32" />
+      <File FileName="HW_7/Notes.cs" Line="7" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

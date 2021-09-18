@@ -22,13 +22,16 @@ namespace HW_7
                 Console.WriteLine("Edit Note - press key 4");
                 Console.WriteLine("Save Note - press key 5");
                 Console.WriteLine("Load Note - press key 6");
-                Console.WriteLine("Print Note - press key 7");
+                Console.WriteLine("Load Note by date range - press key 7");
+                Console.WriteLine("Sort by selected field - press key 8");
+                Console.WriteLine("Print Note - press key 9");
 
                 int key = int.Parse(Console.ReadLine());
                 switch (key)
                 {
                     case 1:
-                        date = DateTime.Now.ToString();
+                        DateTime dateTime = new DateTime(2021, 9, 18);
+                        date = dateTime.ToShortDateString().ToString();
                         Console.WriteLine("Enter text-1");
                         text1 = Console.ReadLine();
                         Console.WriteLine("Enter text-2");
@@ -45,10 +48,12 @@ namespace HW_7
                     case 2:
                         Console.WriteLine("Removes item by index:");
                         diary.RemoveNoteByIndex(int.Parse(Console.ReadLine()));
+                        diary.PrintNote();
                         break;
                     case 3:
                         Console.WriteLine("Removes item by field:");
                         diary.RemoveNoteByField(Console.ReadLine());
+                        diary.PrintNote();
                         break;
                     case 4:
                         Console.WriteLine("Enter item index:");
@@ -58,13 +63,26 @@ namespace HW_7
                         diary.SaveNotes(path);
                         break;
                     case 6:
+                        Console.Clear();
                         diary.LoadNotes(path);
                         diary.PrintNote();
                         break;
                     case 7:
+                        Console.WriteLine("Enter start date");
+                        string startDate = Console.ReadLine();
+                        Console.WriteLine("Enter finish date");
+                        string finishDate = Console.ReadLine();
+                        Console.Clear();
+                        diary.LoadNoteByDateRange(startDate, finishDate, path);
+                       
+                        
+                        break;
+                    case 9:
                         diary.PrintNote();
                         break;
-
+                    case 0:
+                        diary.GetCount();
+                        break;
                     default: break;
                 }
             }

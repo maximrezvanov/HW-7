@@ -70,8 +70,12 @@ namespace HW_7
 
         public void RemoveNoteByIndex(int indexNote)
         {
-            if(notes.Count != 0)
-            notes.RemoveAt(indexNote);
+            if (notes.Count != 0)
+            {
+                notes.RemoveAt(indexNote);
+            }
+
+            Console.WriteLine("Notes is empty");
         }
 
         public void RemoveNoteByField(string field)
@@ -84,6 +88,7 @@ namespace HW_7
                         notes.Remove(note);
                 }      
             }
+            Console.WriteLine("Notes is empty");
         }
         #endregion
 
@@ -109,6 +114,32 @@ namespace HW_7
             {
                 Console.WriteLine(i + " " + notes[i].PrintNotes());
             }
+        }
+
+        public void LoadNoteByDateRange(string startDate, string finishDate, string file)
+        {
+            DateTime start = Convert.ToDateTime(startDate);
+            DateTime finish = Convert.ToDateTime(finishDate);
+            notes.Clear();
+            using (StreamReader sr = new StreamReader(file))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string[] arg = sr.ReadLine().Split(',');
+                    DateTime time = Convert.ToDateTime(arg[0]);
+
+                    if (time >= start && time <= finish)
+                    {
+                        AddNote(new Note(arg[0], arg[1], arg[2], arg[3], arg[4]));
+                    }
+                }
+                PrintNote();
+            }
+        }
+
+        public void GetCount()
+        {
+            Console.WriteLine(notes.Count);
         }
     }
 }
