@@ -10,10 +10,10 @@ namespace HW_7
             string date, text1, text2, text3, text4;
           
             Diary diary = new Diary(new Note());
-
             
             while (true)
             {
+                int key;
                 Console.WriteLine();
                 Console.WriteLine("Make a choice: ");
                 Console.WriteLine("New Note - press key 1");
@@ -26,7 +26,11 @@ namespace HW_7
                 Console.WriteLine("Sort by selected field - press key 8");
                 Console.WriteLine("Print Note - press key 9");
 
-                int key = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out key))
+                {
+                    Console.WriteLine("Invalid input. Try again");
+                }
+                
                 switch (key)
                 {
                     case 1:
@@ -41,13 +45,17 @@ namespace HW_7
                         Console.WriteLine("Enter text-4");
                         text4 = Console.ReadLine();
                         Console.WriteLine();
-
                         diary.AddItem(date, text1, text2, text3, text4);
                         diary.PrintNote();
                         break;
                     case 2:
                         Console.WriteLine("Removes item by index:");
-                        diary.RemoveNoteByIndex(int.Parse(Console.ReadLine()));
+                        int index;
+                        while (!int.TryParse(Console.ReadLine(), out index))
+                        {
+                            Console.WriteLine("Invalid input. Try again");
+                        }
+                        diary.RemoveNoteByIndex(index);
                         diary.PrintNote();
                         break;
                     case 3:
@@ -56,8 +64,13 @@ namespace HW_7
                         diary.PrintNote();
                         break;
                     case 4:
-                        Console.WriteLine("Enter item index:");
-                        diary.EditNote(int.Parse(Console.ReadLine()));
+                        Console.WriteLine("Enter note index:");
+                        int noteIndex;
+                        while (!int.TryParse(Console.ReadLine(), out noteIndex))
+                        {
+                            Console.WriteLine("Invalid input. Try again");
+                        }
+                        diary.EditNote(noteIndex);
                         break;
                     case 5:
                         diary.SaveNotes(path);
@@ -68,30 +81,30 @@ namespace HW_7
                         diary.PrintNote();
                         break;
                     case 7:
-                        Console.WriteLine("Enter start date");
+                        Console.WriteLine("Enter start date, dd/mm/yyyy");
                         string startDate = Console.ReadLine();
                         Console.WriteLine("Enter finish date");
                         string finishDate = Console.ReadLine();
                         Console.Clear();
                         diary.LoadNoteByDateRange(startDate, finishDate, path);
-                       
-                        
                         break;
+                     case  8:
+                         Console.WriteLine("Enter the field number to sort, #1 - 5");
+                         int fieldNumber;
+                         while (!int.TryParse(Console.ReadLine(), out fieldNumber))
+                         {
+                             Console.WriteLine("Invalid input. Try again");
+                         }
+                         diary.SortNotes(fieldNumber);
+                         Console.Clear();
+                         diary.PrintNote();
+                         break;
                     case 9:
                         diary.PrintNote();
                         break;
-                    case 0:
-                        diary.GetCount();
-                        break;
-                    default: break;
                 }
             }
-            
-
             Console.ReadKey();
-
-
-
         }
     }
 }

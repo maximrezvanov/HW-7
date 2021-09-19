@@ -1,5 +1,4 @@
-﻿using System;
-namespace HW_7
+﻿namespace HW_7
 {
     public struct Note
     {

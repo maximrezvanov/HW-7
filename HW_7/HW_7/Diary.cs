@@ -109,7 +109,7 @@ namespace HW_7
 
         public void PrintNote()
         {
-            Console.WriteLine($"# {titles[0],-10} \t\t {titles[1],-10}\t {titles[2],-10}\t {titles[3],-10}\t {titles[4],-10} \n");
+            Console.WriteLine($"# {titles[0],-10}\t {titles[1],-10}\t {titles[2],-10}\t {titles[3],-10}\t {titles[4],-10} \n");
             for (int i = 0; i < notes.Count; i++)
             {
                 Console.WriteLine(i + " " + notes[i].PrintNotes());
@@ -137,9 +137,53 @@ namespace HW_7
             }
         }
 
-        public void GetCount()
+        public void SortNotes(int field)
         {
-            Console.WriteLine(notes.Count);
+            switch(field)
+            {
+                case 1:
+                    notes = notes.OrderBy(f => f.date)
+                        .ThenBy(f => f.text1)
+                        .ThenBy(f => f.text2)
+                        .ThenBy(f => f.text3)
+                        .ThenBy(f => f.text4)
+                        .ToList();
+                    break;
+                case 2:
+                    notes = notes.OrderBy(f => f.text1)
+                        .ThenBy(f => f.date)
+                        .ThenBy(f => f.text2)
+                        .ThenBy(f => f.text3)
+                        .ThenBy(f => f.text4)
+                        .ToList();
+                    break;
+                case 3:
+                    notes = notes.OrderBy(f => f.text2)
+                        .ThenBy(f => f.text1)
+                        .ThenBy(f => f.date)
+                        .ThenBy(f => f.text3)
+                        .ThenBy(f => f.text4)
+                        .ToList();
+                    break;
+                case 4:
+                    notes = notes.OrderBy(f => f.text3)
+                        .ThenBy(f => f.text1)
+                        .ThenBy(f => f.text2)
+                        .ThenBy(f => f.date)
+                        .ThenBy(f => f.text4)
+                        .ToList();
+                    break;  
+                case 5:
+                    notes = notes.OrderBy(f => f.text4)
+                        .ThenBy(f => f.text1)
+                        .ThenBy(f => f.text2)
+                        .ThenBy(f => f.date)
+                        .ThenBy(f => f.text3)
+                        .ToList();
+                    break;  
+                default: 
+                    break;
+            }
         }
     }
 }
